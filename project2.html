@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temprature converter</title>
+    <link rel="stylesheet" href="project2.css">
+</head>
+<body>
+    
+    <form action="" id="tempcal" onsubmit="calculate(); return false">
+
+        <label for="temp" class="label">Please enter the temprature you want to convert.</label>
+        <br/>
+        <input type="number" name="temp" id="temp">
+
+        <select name="temp_diff" id="temp_diff">
+            <option value="cel">celcius</option>
+            <option value="fehr">fahrenheit</option>
+        </select> <br>
+
+       <button class="btn">
+        <input type="submit" name="temp" class="submit"> <br>
+       </button> 
+
+        <span id="resultcontain">
+        </span>
+
+    </form>
+    
+    <script>
+
+       const calculate = () => {
+        const numbertemp = document.getElementById('temp').value;
+        console.log(numbertemp);
+
+
+        const tempselect = document.getElementById('temp_diff');
+        const valuetemp = temp_diff.options[tempselect.selectedIndex].value;
+        console.log(valuetemp);
+
+        const celtofah= (cel) => {
+            let fehranheit = Math.round((cel * 9/5)+ 32);
+            return fehranheit;
+        }
+
+        const fahtocel = (fehr) => {
+            let celcius = Math.round((fehr - 32)* 5/9);
+            return celcius;
+        }
+
+        let result;
+
+        if (valuetemp == 'cel')
+        {
+            result = celtofah(numbertemp);
+            document.getElementById('resultcontain').innerHTML = `= ${result}fahrenheit`;
+        }
+        else
+        {
+            result =  fahtocel(numbertemp);
+            document.getElementById('resultcontain').innerHTML = `= ${result}celcius`;
+        }
+
+
+       } 
+
+
+    </script>
+</body>
+</html>
